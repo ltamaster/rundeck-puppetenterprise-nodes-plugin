@@ -87,7 +87,12 @@ public class ResourceModelFactory implements ResourceModelSourceFactory, Describ
         final Mapper mapper = new Mapper(PropertyHandling.readDefaultNodeTag(properties));
         final Map<String, Object> mapping = getMapping(properties);
         DefaultHTTP defaultHTTP = createHTTP(properties, metrics);
-        PuppetDB pdb = new PuppetDB(defaultHTTP);
+
+        String endpointPath = PropertyHandling.readEndpountPath(properties).orNull();
+        if(endpointPath==null){
+            endpointPath=Constants.DEFAULT_ENDPOINT_PATH;
+        }
+        PuppetDB pdb = new PuppetDB(defaultHTTP,endpointPath);
         return new PuppetDBResourceModelSource(
                 pdb,
                 mapper,

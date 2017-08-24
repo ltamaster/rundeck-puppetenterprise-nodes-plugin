@@ -7,6 +7,7 @@ import com.dtolabs.rundeck.plugins.util.DescriptionBuilder;
 public interface Constants {
 
     String PROVIDER_NAME = "puppet-enterprise";
+    String DEFAULT_ENDPOINT_PATH = "pdb/query/v4";
 
     String PROPERTY_PUPPETDB_HOST = "PROPERTY_PUPPETDB_HOST";
     String PROPERTY_PUPPETDB_CERTIFICATE_NAME = "PROPERTY_PUPPETDB_CERTIFICATE_NAME";
@@ -17,6 +18,7 @@ public interface Constants {
     String PROPERTY_NODE_QUERY = "PROPERTY_NODE_QUERY";
     String PROPERTY_METRICS_INTERVAL = "PROPERTY_METRICS_INTERVAL";
     String PROPERTY_TAGS_SOURCE = "PROPERTY_TAGS_SOURCE";
+    String PROPERTY_ENDPOINT_PATH = "PROPERTY_ENDPOINT_PATH";
 
     boolean PROPERTY_IS_REQUIRED = true;
     boolean PROPERTY_IS_OPTIONAL = false;
@@ -40,6 +42,10 @@ public interface Constants {
                                         "In what puppet resource to look for tags.",
                                         false,
                                         null))
+            .property(PropertyUtil.string(PROPERTY_ENDPOINT_PATH, "Puppet DB endpoint path",
+                    "Puppet DB endpoint base path, the default path is pdb/query/v4 (Puppet DB version 4).",
+                    false,
+                    DEFAULT_ENDPOINT_PATH))
             .build();
 
 }

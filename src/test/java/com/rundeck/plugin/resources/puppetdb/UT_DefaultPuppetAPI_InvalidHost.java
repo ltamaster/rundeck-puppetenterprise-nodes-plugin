@@ -24,7 +24,7 @@ public class UT_DefaultPuppetAPI_InvalidHost implements Constants {
         final MetricRegistry metrics = new MetricRegistry();
         DefaultHTTP http = ResourceModelFactory.createHTTP(properties, metrics);
         final DefaultPuppetAPI defaultPuppetAPI = new DefaultPuppetAPI(
-                http
+                http,Constants.DEFAULT_ENDPOINT_PATH
         );
         final List<Node> nodes = defaultPuppetAPI.getNodes(null);
 

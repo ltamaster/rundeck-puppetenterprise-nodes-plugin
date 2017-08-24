@@ -42,6 +42,10 @@ public final class PropertyHandling implements Constants {
         return optionalString(properties, PROPERTY_TAGS_SOURCE);
     }
 
+    public static Optional<String> readEndpountPath(final Properties properties) {
+        return optionalString(properties, PROPERTY_ENDPOINT_PATH);
+    }
+
     public static String getPropertyTitle(final String propertyName, final String defaultTitle) {
         final Function<Property, String> getTitle = new Function<Property, String>() {
             @Override
